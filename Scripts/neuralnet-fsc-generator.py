@@ -43,7 +43,6 @@ def prepare(input_arr):
   divideNum = [18.0]
   input_arr = np.divide(input_arr, divideNum)
   newArray = np.reshape(input_arr, (1,4))
-  
   return newArray
 
 
@@ -61,35 +60,38 @@ InputIntervals = pd.read_csv(io.BytesIO(uploaded['InputIntervals.csv']), skiprow
 with open('data.csv', mode='w') as songFile:
     songWriter = csv.writer(songFile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
-
 #loop through all intros
-for j in range(0, 1): #InputIntervals.shape[0]):
+for j in range(0, InputIntervals.shape[0]):
+  #inputNotes = the intervals of each song we generate. The 4 most recently generated are fed into net.
   inputNotes = []
+  for note in InputIntervals.values.tolist()[j]:
+    inputNotes.append(note)
 
-  #create 8 middle notes of a song
-  for k in range(0, 8):
-
-    #Nothing predicted yet, use InputIntervals
-    if(k == 0):
-      for note in InputIntervals.values.tolist()[j]:
-        inputNotes.append(note)
-      
+  #create 8 middle intervals of a song
+  for k in range(0, 7):
     #Generate prediction based on previous 4 notes
     prediction = model.predict(prepare(inputNotes[k:k+4]))
 
-    #format data to find the pair with the max score 
-    listy = np.array2string(prediction[0]).split(" ")
+    #format data to find the max 
+    listy = np.array2string(prediction[0]).split()
+
     intervals = []
     for i in range(1, len(listy) - 1):
       intervals.append(listy[i])
-      
+
     maxNum = max(intervals)
     maxIndex = intervals.index(maxNum)
-    outputInterval = validPairs[maxIndex]
-    
 
-    #TODO: Write notes to file
-    print(inputNotes)
-    
+    outputInterval = validPairs[maxIndex]
     inputNotes.append(outputInterval[0])
     inputNotes.append(outputInterval[1])
+
+  #last note is manually generated
+  inputNotes.append(9)
+  inputNotes.append(14)
+
+  #Write notes to file
+  #songWriter.writerow(inputNotes)  
+  print(inputNotes)
+
+  inputNotes = []
