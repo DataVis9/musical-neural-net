@@ -9,11 +9,10 @@ A rule-based system that generates musical data in the style of First Species Co
     - print testing data to GenerateTestData.csv
     - print training labels to GenerateTrainLabels.csv
     - print testing labels to GenerateTestLabels.csv
-3. Copy code from `generator-trainer.py`, paste it into a Google Colab notebook
+3. Make a new Notebook in Google Colab: https://colab.research.google.com/
+3. Copy code in `generator-trainer.py` and paste it into your Google Colab notebook
 4. Click the triangle to run the neural net. Scroll down until you see an upload prompt. Use it to upload the needed files, located in .../SeveralLegalPairs/Datasets
     - GenerateTrainData.csv
     - GenerateTestData.csv
     - GenerateTrainLabels.csv
     - GenerateTestLabels.csv
-
-OneLegalPair and SeveralLegalPairs are roughly the same thing, just different kinds of data.
