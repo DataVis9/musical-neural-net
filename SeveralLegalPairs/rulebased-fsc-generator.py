@@ -124,8 +124,10 @@ def musicGenerator():
   #generate the cantus firmus and obtain corresponding cp
   for i in range(1,9):
     prevInterval = song[i-1]
+    if(i>1):
+      cfBlackList.append(song[i-2][1])
     
-    #remove last CF note
+    #remove last CF note to prevent duplicates
     cfBlackList.append(prevInterval[1])
     
     if(len(song) >= 2):
@@ -164,7 +166,7 @@ def musicGenerator():
 # Write music information to file
 f = open("Datasets/SongPairs.csv","w+")
 failedCount = 0
-numSongsToGenerate = 80000
+numSongsToGenerate = 1000
 
 for j in range(0, numSongsToGenerate):
   song = musicGenerator()
