@@ -8,7 +8,6 @@
 # Each song is 10 notes long, all naturals, limited to C Major. 
 #
 # Created 2/8/2020 by Emily Wasylenko
-# Modified 3/28/2020 by Emily Wasylenko
 
 
 import random
