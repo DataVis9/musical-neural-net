@@ -39,6 +39,9 @@ CounterNoteLookup = dict([
 def getCounterpoint(cf, prevInterval, prevPrevInterval):
   counterpointBlacklist = []
 
+  #repeated note check
+  counterpointBlacklist.append(prevInterval[0])
+
   #fifth check
   if((prevInterval[1]-prevInterval[0])>=4):
     counterpointBlacklist.append(cf+4)
@@ -123,6 +126,8 @@ def musicGenerator():
   #generate the cantus firmus and obtain corresponding cp
   for i in range(1,9):
     prevInterval = song[i-1]
+
+    #remove second to last CF note to prevent duplicates
     if(i>1):
       cfBlackList.append(song[i-2][1])
     
@@ -142,7 +147,6 @@ def musicGenerator():
       cfBlackList.append(3)
       cfBlackList.append(10)
       cfBlackList.append(17)
-
 
     cf = choice([j for j in range(4,18) if j not in cfBlackList])
     cp = getCounterpoint(cf, prevInterval, prevPrevInterval)    
