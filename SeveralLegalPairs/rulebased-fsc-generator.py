@@ -167,7 +167,7 @@ def musicGenerator():
 
 
 # Write music information to file
-f = open("Datasets/SongPairs.csv","w+")
+f = open("Datasets/SongPairs.csv","a+")
 failedCount = 0
 numSongsToGenerate = 1000
 
