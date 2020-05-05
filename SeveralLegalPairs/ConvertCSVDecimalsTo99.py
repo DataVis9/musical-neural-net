@@ -25,5 +25,4 @@ for line in fread2:
 
 
 fprint.close()
-
 fprint2.close()

@@ -4,7 +4,6 @@
 # It outputs the 8 middle intervals of a song. First and last note are added manually.
 #
 # Created 2/25/2020 by Emily Wasylenko
-# Modified 3/29/2020 by Emily Wasylenko
 
 
 #generator based on imported Model
