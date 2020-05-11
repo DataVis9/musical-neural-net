@@ -169,7 +169,7 @@ def musicGenerator():
 # Write music information to file
 f = open("Datasets/SongPairs.csv","a+")
 successfulGenerations = 0
-numSongsToGenerate = 70000
+numSongsToGenerate = 30000
 
 for j in range(0, numSongsToGenerate):
 while successfulGenerations < numSongsToGenerate:
