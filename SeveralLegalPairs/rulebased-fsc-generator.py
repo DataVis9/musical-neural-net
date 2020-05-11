@@ -168,22 +168,19 @@ def musicGenerator():
 
 # Write music information to file
 f = open("Datasets/SongPairs.csv","a+")
-failedCount = 0
-numSongsToGenerate = 1000
+successfulGenerations = 0
+numSongsToGenerate = 70000
 
 for j in range(0, numSongsToGenerate):
+while successfulGenerations < numSongsToGenerate:
   song = musicGenerator()
-  if (song == -1):
-    failedCount = failedCount+1
-  else:
+  if (song != -1):
+    successfulGenerations = successfulGenerations+1
     for i in range(0, len(song)):
       f.write(str(song[i][0]) + "~" + str(song[i][1]))
       f.write(",")
     f.write("\n")
 f.close()
-print("Fail rate: ",failedCount,"/",numSongsToGenerate,"=",failedCount/numSongsToGenerate)
-
-
 
 
 # BELOW: JUST FOR FUN 
