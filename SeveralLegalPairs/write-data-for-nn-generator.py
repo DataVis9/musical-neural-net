@@ -99,12 +99,12 @@ for overallIndex, line in enumerate(f2, start=0):
 
             #print data
             
-            if(overallIndex < 19000):
+            if(overallIndex < 10000):
                 fTestDataPrint.write(str(prevCP) + ","
                              + str(prevCF) + ","
                              + str(cp) + ","
                              + str(cf) + "\n")
-            else:
+            elif(overallIndex < 40000):
                 fTrainDataPrint.write(str(prevCP) + ","
                              + str(prevCF) + ","
                              + str(cp) + ","
@@ -140,21 +140,21 @@ for overallIndex, line in enumerate(f2, start=0):
                 """
             if fourNoteKey not in InputMap.keys():
                 unfound = unfound+1
-                if(overallIndex < 19000):
+                if(overallIndex < 10000):
                     for i in range(0, 77):
                         fTestLblPrint.write(str(0) + ",")
                     fTestLblPrint.write("\n")
-                else:
+                elif (overallIndex < 40000):
                     for i in range(0, 77):
                         fTrainLblPrint.write(str(0) + ",")
                     fTrainLblPrint.write("\n")
             else:
                 value = InputMap[fourNoteKey]
-                if(overallIndex < 19000):
+                if(overallIndex < 10000):
                     for v in value:
                         fTestLblPrint.write(str(v) + ",")
                     fTestLblPrint.write("\n")
-                else:
+                elif(overallIndex < 40000):
                     for v in value:
                         fTrainLblPrint.write(str(v) + ",")
                     fTrainLblPrint.write("\n")
